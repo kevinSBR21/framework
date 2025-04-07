@@ -1,0 +1,156 @@
+.encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: linear-gradient(to right, #f5f5f5, #e8f5e9);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 20px 20px;
+  }
+  
+  .logo {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2e7d32;
+    margin-left: 1rem;
+  }
+  
+  .menu-principal ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .menu-principal li {
+    padding: 0.5rem 1rem;
+    background-color: #a5d6a7;
+    border-radius: 12px;
+    color: #1b5e20;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .menu-principal li:hover {
+    background-color: #81c784;
+  }
+  
+  .btn {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    font-weight: bold;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn.verde {
+    background-color: #43a047;
+  }
+  
+  .btn.verde:hover {
+    background-color: #388e3c;
+  }
+  
+  .btn.naranja {
+    background-color: #fb8c00;
+  }
+  
+  .btn.naranja:hover {
+    background-color: #ef6c00;
+  }
+  
+  .btn.rojo {
+    background-color: #e53935;
+  }
+  
+  .btn.rojo:hover {
+    background-color: #c62828;
+  }
+  
+  /* MODALES */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-contenido {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    animation: slideIn 0.4s ease;
+  }
+  
+  .modal-contenido h2 {
+    margin-bottom: 1rem;
+    color: #2e7d32;
+    text-align: center;
+  }
+  
+  .modal-contenido form input,
+  .modal-contenido form select {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+  }
+  
+  .modal-contenido form button {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .modal-contenido form button:hover {
+    background-color: #1b5e20;
+  }
+  
+  .cerrar {
+    position: absolute;
+    top: 0.6rem;
+    right: 1rem;
+    font-size: 2rem;
+    color: #888;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-30px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

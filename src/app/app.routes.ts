@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import { IndexComponent } from './home/index/index.component';
+
+export const routes: Routes = [
+
+    {path: 'index', component: IndexComponent},
+
+
+    {path: '', redirectTo:'/index', pathMatch:'full'}
+];

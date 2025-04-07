@@ -1,8 +1,15 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, Routes } from '@angular/router';
+import { IndexComponent } from './home/index/index.component';
 
-import { routes } from './app.routes';
 
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+
+
+const routes: Routes =[
+ {path: 'index', component: IndexComponent},
+    {path: '', redirectTo:'/index', pathMatch:'full'}
+
+]
+
+export const appConfig = {
+  providers: [provideRouter(routes) ],
 };
