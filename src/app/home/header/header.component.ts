@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './user.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports:[FormsModule, CommonModule]
+  imports:[FormsModule, CommonModule, RouterModule]
 })
 export class HeaderComponent implements OnInit {
 
@@ -19,7 +20,7 @@ export class HeaderComponent implements OnInit {
       rol: 'usuario'
     };
   usuarioLogueado: User | null = null;
-  menuItems: string[] = [];
+  menuItems: { texto: string, ruta: string }[] = [];
 
    modal: 'login' | 'registro' | null = null;
   
@@ -44,8 +45,8 @@ export class HeaderComponent implements OnInit {
     
       if (usuarioEncontrado) {
         sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
-        this.usuarioLogueado = usuarioEncontrado; // <--- Esto faltaba
-        this.actualizarMenu(); // <--- Esto también
+        this.usuarioLogueado = usuarioEncontrado; 
+        this.actualizarMenu(); 
         alert(`Bienvenido, ${usuarioEncontrado.nombre}`);
         this.cerrarModal();
       } else {
@@ -60,7 +61,7 @@ export class HeaderComponent implements OnInit {
   
     sessionStorage.setItem('usuarioActivo', JSON.stringify(this.nuevoUsuario));
     this.usuarioLogueado = this.nuevoUsuario; // <--- Esto faltaba
-    this.actualizarMenu(); // <--- Esto también
+    this.actualizarMenu();
     alert('Usuario registrado correctamente');
     this.cerrarModal();
   }
@@ -70,14 +71,28 @@ export class HeaderComponent implements OnInit {
     
       switch (this.usuarioLogueado.rol) {
         case 'usuario':
-          this.menuItems = ['Profesionales', 'Asesorías', 'Contáctanos'];
-          break;
-        case 'administrador':
-          this.menuItems = ['Profesionales', 'Usuarios', 'Noticias', 'Solicitudes'];
-          break;
-        case 'abogado':
-          this.menuItems = ['Mi Consultorio', 'Solicitudes'];
-          break;
+      this.menuItems = [
+        { texto: 'Asesorías', ruta: '/asesorias' },
+        { texto: 'Profesionales', ruta: '/profesional' },
+        { texto: 'Contáctanos', ruta: '/contactanos' }
+      ];
+      break;
+
+    case 'administrador':
+      this.menuItems = [
+        { texto: 'Solicitudes', ruta: '/solicitudes' },
+        { texto: 'Noticias', ruta: '/noticias' },
+        { texto: 'Profesionales', ruta: '/profesionales' },
+        { texto: 'Usuarios', ruta: '/usuarios' }
+      ];
+      break;
+
+    case 'abogado':
+      this.menuItems = [
+        { texto: 'Mi consultorio', ruta: '/mi consultorio' },
+        { texto: 'Solicitudes', ruta: '/solicitud' }
+      ];
+      break;
         default:
           this.menuItems = [];
       }
