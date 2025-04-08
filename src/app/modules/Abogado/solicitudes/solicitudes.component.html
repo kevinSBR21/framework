@@ -1,1 +1,77 @@
-<p>solicitudes works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitudes</title>
+</head>
+<body>
+      
+      <div class="main-container">
+        <h2>GESTION DE SOLICITUDES</h2>
+      
+        <div class="search-container">
+          <label for="search">Search:</label>
+          <input type="text" id="search">
+          <div class="add-icon">
+            <img src="agregar.png" alt="Agregar">
+          </div>
+        </div>
+      
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre Cliente</th>
+              <th>TIPO</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Laura Gomez</td>
+              <td>FISCAL</td>
+              <td>11/30/2024 5:49:25 PM</td>
+              <td>Aprobada</td>
+              <td class="icons">
+                <img src="assets/edit-icon.png" alt="Editar">
+                <img src="assets/pdf-icon.png" alt="PDF">
+              </td>
+            </tr>
+            <tr>
+              <td>Santiago Alvarez</td>
+              <td>JURIDICA</td>
+              <td>11/30/2024 5:49:25 PM</td>
+              <td>En espera</td>
+              <td class="icons">
+                <img src="assets/edit-icon.png" alt="Editar">
+                <img src="assets/pdf-icon.png" alt="PDF">
+              </td>
+            </tr>
+            <tr>
+              <td>Andres Ospina</td>
+              <td>LABORAL</td>
+              <td>11/30/2024 5:49:25 PM</td>
+              <td>En espera</td>
+              <td class="icons">
+                <img src="assets/edit-icon.png" alt="Editar">
+                <img src="assets/pdf-icon.png" alt="PDF">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      
+        <div class="pagination">
+          <p>Showing 1 to 9 of 9 entries</p>
+          <div class="pages">
+            <span>&laquo;</span>
+            <button class="active">1</button>
+            <span>&raquo;</span>
+          </div>
+        </div>
+      </div>
+      
+    
+</body>
+</html>

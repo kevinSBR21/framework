@@ -1,0 +1,85 @@
+.usuarios-container {
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .titulo {
+    color: #0078c8;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .input-busqueda {
+    padding: 8px 12px;
+    margin-bottom: 20px;
+    width: 250px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .tabla-usuarios {
+    width: 100%;
+    border-collapse: collapse;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .tabla-usuarios th,
+  .tabla-usuarios td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+  }
+  
+  .tabla-usuarios th {
+    background-color: #0078c8;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .tabla-usuarios td strong {
+    color: #000;
+  }
+  
+  .btn-editar,
+  .btn-eliminar {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .btn-editar img,
+  .btn-eliminar img {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .btn-eliminar img {
+    filter: brightness(0) saturate(100%) invert(31%) sepia(92%) saturate(6946%) hue-rotate(357deg) brightness(97%) contrast(112%);
+  }
+  
+  .info-registros {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  .paginacion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  
+  .paginacion span {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .paginacion .activo {
+    background-color: #f0f0f0;
+  }
+  

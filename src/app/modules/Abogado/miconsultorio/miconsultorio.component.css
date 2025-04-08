@@ -1,0 +1,112 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    width: 40px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 50px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+  }
+  
+  .profile-icon img {
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .main-container {
+    max-width: 100%;
+    margin: 50px auto 0;
+    text-align: center;
+  }
+  
+  .main-container h2 {
+    font-style: italic;
+    font-weight: 400;
+    margin-bottom: 50px;
+  }
+  
+  .cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0 50px;
+  }
+  
+  .card {
+    background-color: #fcd2a2;
+    border-radius: 20px;
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    width: 320px;
+    box-shadow: 4px 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .avatar {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .card .info {
+    text-align: left;
+  }
+  
+  .card .name {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .card .fecha {
+    font-style: italic;
+    font-size: 14px;
+  }
+  
+  .card .fecha span {
+    font-style: normal;
+    display: block;
+    margin-top: 3px;
+  }
+  
+  .arrow {
+    margin: 40px auto;
+  }
+  
+  .arrow img {
+    width: 50px;
+    cursor: pointer;
+  }
+  

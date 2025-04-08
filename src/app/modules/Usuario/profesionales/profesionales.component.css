@@ -1,0 +1,137 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-color: #fff;
+  }
+  
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo img {
+    width: 40px;
+  }
+  
+  .logo span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .profile-icon img {
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  /* Container */
+  .container {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  /* Card */
+  .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0eeee;
+    border-radius: 20px;
+    padding: 15px 25px;
+  }
+  
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .stars {
+    color: gold;
+    font-size: 20px;
+  }
+  
+  .info h3 {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+  
+  .info p {
+    font-size: 14px;
+  }
+  
+  .info img {
+    width: 20px;
+    margin-right: 5px;
+  }
+  
+  .price {
+    font-weight: bold;
+  }
+  
+  /* Buttons */
+  .buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .perfil {
+    background-color: white;
+    color: #1abc5e;
+    border: 2px solid #1abc5e;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .agendar {
+    background-color: #1abc5e;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
