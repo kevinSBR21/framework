@@ -1,62 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin usuarios</title>
-</head>
-<body>
-  <div class="usuarios-container">
-    <h2 class="titulo">LISTADO DE USUARIOS</h2>
-  
-    <input type="text" placeholder="Buscar usuario..." class="input-busqueda" />
-  
-    <table class="tabla-usuarios">
-      <thead>
-        <tr>
-          <th>Nombre Completo</th>
-          <th>Correo Electronico</th>
-          <th>Numero de Telefono</th>
-          <th>Nombre de Usuario</th>
-          <th>Estado</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Juan Contreras Ospina</td>
-          <td><strong>juan99-gmail.com</strong></td>
-          <td>3105535293</td>
-          <td>juan99</td>
-          <td>Activo</td>
-          <td>
-            <button class="btn-editar"><img src="assets/img/editar.png" alt="Editar"></button>
-            <button class="btn-eliminar"><img src="assets/img/eliminar.png" alt="Eliminar"></button>
-          </td>
-        </tr>
-        <tr>
-          <td>Maria Median Lopez</td>
-          <td><strong>maria35-gmail.com</strong></td>
-          <td>3213456213</td>
-          <td>maria35</td>
-          <td>Activo</td>
-          <td>
-            <button class="btn-editar"><img src="assets/img/editar.png" alt="Editar"></button>
-            <button class="btn-eliminar"><img src="assets/img/eliminar.png" alt="Eliminar"></button>
-          </td>
-        </tr>
-        
-      </tbody>
-    </table>
-  
-    <p class="info-registros">Showing 1 to 9 of 9 entries</p>
-  
-    <div class="paginacion">
-      <span>«</span>
-      <span class="activo">1</span>
-      <span>»</span>
-    </div>
+<div class="usuarios-container">
+  <h2 class="title">Gestión de Usuarios</h2>
+  <table class="usuarios-table">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Correo</th>
+        <th>Rol</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of usuarios">
+        <td>{{ u.nombre }}</td>
+        <td>{{ u.correo }}</td>
+        <td>{{ u.rol }}</td>
+        <td>
+          <button class="btn edit-btn" (click)="openEditModal(u)">
+            Editar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal de edición -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal-content">
+    <h3>Editar Usuario</h3>
+    <form (ngSubmit)="saveEdit()">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input [(ngModel)]="editableUser.nombre" name="nombre" required />
+      </div>
+      <div class="form-group">
+        <label>Correo</label>
+        <input [(ngModel)]="editableUser.correo" name="correo" type="email" required />
+      </div>
+      <div class="form-group">
+        <label>Rol</label>
+        <select [(ngModel)]="editableUser.rol" name="rol" required>
+          <option value="usuario">usuario</option>
+          <option value="administrador">administrador</option>
+          <option value="abogado">abogado</option>
+        </select>
+      </div>
+      <div class="modal-buttons">
+        <button type="submit" class="btn save-btn">Guardar</button>
+        <button type="button" class="btn cancel-btn" (click)="closeModal()">
+          Cancelar
+        </button>
+      </div>
+    </form>
   </div>
-  
-</body>
-</html>
+</div>

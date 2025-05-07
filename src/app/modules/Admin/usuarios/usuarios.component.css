@@ -1,85 +1,97 @@
 .usuarios-container {
-    padding: 30px;
-    font-family: Arial, sans-serif;
-    text-align: center;
-  }
-  
-  .titulo {
-    color: #0078c8;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .input-busqueda {
-    padding: 8px 12px;
-    margin-bottom: 20px;
-    width: 250px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .tabla-usuarios {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .tabla-usuarios th,
-  .tabla-usuarios td {
-    border: 1px solid #ddd;
-    padding: 12px;
-    text-align: center;
-  }
-  
-  .tabla-usuarios th {
-    background-color: #0078c8;
-    color: #fff;
-    font-weight: bold;
-  }
-  
-  .tabla-usuarios td strong {
-    color: #000;
-  }
-  
-  .btn-editar,
-  .btn-eliminar {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .btn-editar img,
-  .btn-eliminar img {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .btn-eliminar img {
-    filter: brightness(0) saturate(100%) invert(31%) sepia(92%) saturate(6946%) hue-rotate(357deg) brightness(97%) contrast(112%);
-  }
-  
-  .info-registros {
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  
-  .paginacion {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
-    gap: 10px;
-  }
-  
-  .paginacion span {
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-  }
-  
-  .paginacion .activo {
-    background-color: #f0f0f0;
-  }
-  
+  padding: 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #333;
+}
+.usuarios-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.usuarios-table th,
+.usuarios-table td {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e0e0e0;
+}
+.usuarios-table th {
+  background: #fafafa;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: #555;
+}
+.usuarios-table tr:nth-child(even) {
+  background: #fcfcfc;
+}
+.btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+.edit-btn {
+  background: #4a90e2;
+  color: #fff;
+}
+.save-btn {
+  background: #28a745;
+  color: #fff;
+}
+.cancel-btn {
+  background: #dc3545;
+  color: #fff;
+  margin-left: 0.5rem;
+}
+
+/* Modal */
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-content {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+.modal-content h3 {
+  margin-top: 0;
+  font-size: 1.25rem;
+  color: #333;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: #555;
+}
+.form-group input,
+.form-group select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
