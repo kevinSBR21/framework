@@ -13,11 +13,13 @@ import { SolicitudesComponent } from './modules/Admin/solicitudes/solicitudes.co
 import { AsesoriasComponent } from './modules/Usuario/asesorias/asesorias.component';
 import { ContactanosComponent } from './modules/Usuario/contactanos/contactanos.component';
 import { ProfesionalComponent } from './modules/Usuario/profesionales/profesionales.component';
+import { PerfilComponent } from './home/perfil/perfil.component';
 
 
 export const routes: Routes = [
 
     {path: 'index', component: IndexComponent},
+    {path: 'perfil', component: PerfilComponent},
 
     {path: 'mi consultorio', component: MiconsultorioComponent},
     {path: 'solicitud', component: SolicitudComponent},

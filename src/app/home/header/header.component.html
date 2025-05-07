@@ -1,65 +1,66 @@
-<div class="encabezado"> 
-    <img src="logoT.ico" alt="Logo" class="logo">
-  
-    <div class="menu-principal" *ngIf="usuarioLogueado">
-      <ul>
-        <li *ngFor="let item of menuItems">
-          <a [routerLink]="item.ruta" >{{ item.texto }}</a>
-        </li>
-        
-      </ul>
-    </div>
-  
-    <div class="acciones-derecha">
-      <!-- Si NO hay usuario logueado -->
-      <ng-container *ngIf="!usuarioLogueado">
-        <button (click)="abrirModal('login')" class="btn verde">Iniciar Sesión</button>
-        <button (click)="abrirModal('registro')" class="btn naranja">Crear cuenta</button>
-      </ng-container>
-  
-      <!-- Si SÍ hay usuario logueado -->
-      <ng-container *ngIf="usuarioLogueado">
-        <button (click)="cerrarSesion()" class="btn rojo">Cerrar sesión</button>
-      </ng-container>
-    </div>
-  </div>
-  
- 
-  <!-- Modal de Login -->
-  <div class="modal" *ngIf="modal === 'login'">
-    <div class="modal-contenido">
-      <span class="cerrar" (click)="cerrarModal()">&times;</span>
-      <h2>Iniciar Sesión</h2>
-      <form (ngSubmit)="iniciarSesion()" #formLogin="ngForm">
-        <input type="email" name="correoLogin" [(ngModel)]="correoLogin" placeholder="Correo electrónico" required />
-        <input type="password" name="contrasenaLogin" [(ngModel)]="contrasenaLogin" placeholder="Contraseña" required />
-        <button type="submit" [disabled]="formLogin.invalid">Iniciar Sesión</button>
-      </form>
+<header class="encabezado">
+  <img src="logoT.ico" alt="Logo" class="logo" />
+
+  <span class="nombre-empresa">Te Apoyamos S.A.S</span>
+
+  <!-- Mostrar menú dinámico solo si hay usuario logueado -->
+  <nav class="menu-principal" *ngIf="usuarioLogueado && menuItems.length > 0">
+    <ul>
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.ruta">{{ item.texto }}</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="acciones-derecha">
+    <!-- Si NO hay usuario logueado -->
+    <ng-container *ngIf="!usuarioLogueado">
+      <button (click)="abrirModal('login')" class="btn verde">Iniciar Sesión</button>
+      <button (click)="abrirModal('registro')" class="btn naranja">Crear cuenta</button>
+    </ng-container>
+
+    <!-- Si SÍ hay usuario logueado -->
+    <ng-container *ngIf="usuarioLogueado">
+      <a [routerLink]="'/perfil'">
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Avatar" class="avatar" />
+      </a>
       
-    </div>
+      <button (click)="cerrarSesion()" class="btn rojo">Cerrar sesión</button>
+    </ng-container>
   </div>
-  
-  <!-- Modal de Registro -->
-  <div class="modal" *ngIf="modal === 'registro'">
-    <div class="modal-contenido">
-      <span class="cerrar" (click)="cerrarModal()">&times;</span>
-      <h2>Crear cuenta</h2>
-      <form (ngSubmit)="registrarUsuario()" #formReg="ngForm">
-        <input type="text" placeholder="Nombre" name="nombre" [(ngModel)]="nuevoUsuario.nombre" required />
-        <input type="text" placeholder="Apellido" name="apellido" [(ngModel)]="nuevoUsuario.apellido" required />
-        <input type="email" placeholder="Correo electrónico" name="correo" [(ngModel)]="nuevoUsuario.correo" required />
-        <input type="password" placeholder="Contraseña" name="contrasena" [(ngModel)]="nuevoUsuario.contrasena" required />
-        
-        <select name="rol" [(ngModel)]="nuevoUsuario.rol" required>
-          <option value="" disabled selected>Selecciona tu rol</option>
-          <option value="usuario">Usuario</option>
-          <option value="administrador">Administrador</option>
-          <option value="abogado">Abogado</option>
-        </select>
-      
-        <button type="submit" [disabled]="formReg.invalid">Registrarse</button>
-      </form>
-      
-    </div>
+</header>
+
+<!-- Modal de Login -->
+<div class="modal" *ngIf="modal === 'login'">
+  <div class="modal-contenido">
+    <span class="cerrar" (click)="cerrarModal()">&times;</span>
+    <h2>Iniciar Sesión</h2>
+    <form (ngSubmit)="iniciarSesion()" #formLogin="ngForm">
+      <input type="email" name="correoLogin" [(ngModel)]="correoLogin" placeholder="Correo electrónico" required />
+      <input type="password" name="contrasenaLogin" [(ngModel)]="contrasenaLogin" placeholder="Contraseña" required />
+      <button type="submit" [disabled]="formLogin.invalid">Iniciar Sesión</button>
+    </form>
   </div>
-  
+</div>
+
+<!-- Modal de Registro -->
+<div class="modal" *ngIf="modal === 'registro'">
+  <div class="modal-contenido">
+    <span class="cerrar" (click)="cerrarModal()">&times;</span>
+    <h2>Crear cuenta</h2>
+    <form (ngSubmit)="registrarUsuario()" #formReg="ngForm">
+      <input type="text" placeholder="Nombre" name="nombre" [(ngModel)]="nuevoUsuario.nombre" required />
+      <input type="email" placeholder="Correo electrónico" name="correo" [(ngModel)]="nuevoUsuario.correo" required />
+      <input type="password" placeholder="Contraseña" name="contrasena" [(ngModel)]="nuevoUsuario.contrasena" required />
+      
+      <select name="rol" [(ngModel)]="nuevoUsuario.rol" required>
+        <option value="" disabled selected>Selecciona tu rol</option>
+        <option value="usuario">Usuario</option>
+        <option value="administrador">Administrador</option>
+        <option value="abogado">Abogado</option>
+      </select>
+
+      <button type="submit" [disabled]="formReg.invalid">Registrarse</button>
+    </form>
+  </div>
+</div>

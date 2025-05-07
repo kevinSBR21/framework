@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './home/header/header.component';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, CommonModule,FormsModule, HeaderComponent],

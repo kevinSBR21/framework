@@ -1,0 +1,23 @@
+<div class="perfil-container">
+  <!-- Formulario -->
+  <div class="formulario">
+    <h2>Información del Perfil</h2>
+
+    <form (ngSubmit)="guardarCambios()">
+      <input type="text" [(ngModel)]="usuario.nombre" name="nombre" placeholder="Nombre completo" required />
+      <input type="email" [(ngModel)]="usuario.correo" name="correo" placeholder="Correo electrónico" required />
+      <input type="password" [(ngModel)]="usuario.contrasena" name="contrasena" placeholder="Contraseña" required />
+      <input type="text" [value]="usuario.rol" disabled />
+
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+
+  <!-- Perfil visual -->
+  <div class="perfil-lateral">
+    <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" alt="Foto de perfil" />
+    <h3>{{ usuario.nombre }}</h3>
+    <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+    <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+  </div>
+</div>

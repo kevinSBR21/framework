@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto</title>
-</head>
-<body>
-    <div class="container-contactanos">
-        <h2 class="titulo-principal">QUE QUIERE <br> ENVIEARNOS</h2>
-      
-        <div class="opciones">
-          <div class="card">
-            <div class="contenido">
-              <h3><strong>mandanos tu</strong><br>preguntas</h3>
-              <img src="pregunta.png" alt="Formulario">
-            </div>
-          </div>
-      
-          <div class="card">
-            <div class="contenido">
-              <h3><strong>quiero postularme</strong><br><small>(mandar hoja de vida)</small></h3>
-              <img src="postulacion.png" alt="Postulación">
-            </div>
-          </div>
-        </div>
-      
-        <div class="flecha">
-          <img src="flecha.png" alt="Siguiente">
-        </div>
+<div class="container-contactanos">
+  <h2 class="titulo-principal">QUE QUIERE <br> ENVIARNOS</h2>
+
+  <div class="opciones">
+    <div class="card">
+      <div class="contenido">
+        <h3><strong>mandanos tu</strong><br>preguntas</h3>
+        <img src="pregunta.png" alt="Formulario">
       </div>
-      
-    
-</body>
-</html>
+    </div>
+
+    <!-- tarjeta con click -->
+    <div class="card" (click)="openModal()">
+      <div class="contenido">
+        <h3><strong>quiero postularme</strong><br><small>(mandar hoja de vida)</small></h3>
+        <img src="postulacion.png" alt="Postulación">
+      </div>
+    </div>
+  </div>
+
+  <div class="flecha">
+    <img src="flecha.png" alt="Siguiente">
+  </div>
+</div>
+
+<!-- ======= MODAL ======= -->
+<div class="modal-backdrop" *ngIf="showModal">
+  <div class="modal">
+    <h2>Sube tu Hoja de Vida</h2>
+    <input type="file" (change)="onFileSelected($event)" />
+
+    <div class="buttons">
+      <button (click)="upload()" [disabled]="!selectedFile">Enviar</button>
+      <button (click)="closeModal()">Cancelar</button>
+    </div>
+  </div>
+</div>

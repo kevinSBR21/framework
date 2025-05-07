@@ -1,25 +1,33 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
+import { UsuarioService, Usuario } from './usuario.service';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
   imports:[FormsModule, CommonModule, RouterModule]
 })
-export class HeaderComponent implements OnInit {
 
-   nuevoUsuario: User = {
-      nombre: '',
-      apellido: '',
-      correo: '',
-      contrasena: '',
-      rol: 'usuario'
-    };
-  usuarioLogueado: User | null = null;
+
+export class HeaderComponent implements OnInit {
+  constructor(private usuarioService: UsuarioService,
+    private router: Router
+  ) {}
+
+  
+  nuevoUsuario: Usuario = {
+    nombre: '',
+    correo: '',
+    contrasena: '',
+    rol: 'usuario'
+  };
+
+usuarioLogueado: Usuario | null = null;
   menuItems: { texto: string, ruta: string }[] = [];
 
    modal: 'login' | 'registro' | null = null;
@@ -38,33 +46,37 @@ export class HeaderComponent implements OnInit {
     }
   
     iniciarSesion() {
-      const usuarios: User[] = JSON.parse(localStorage.getItem('usuarios') || '[]');
-      const usuarioEncontrado = usuarios.find(
-        u => u.correo === this.correoLogin && u.contrasena === this.contrasenaLogin
-      );
+      this.usuarioService.obtenerParaLogin().subscribe(usuarios => {
+        const usuarioEncontrado = usuarios.find(
+          u => u.correo === this.correoLogin && u.contrasena === this.contrasenaLogin
+        );
     
-      if (usuarioEncontrado) {
-        sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
-        this.usuarioLogueado = usuarioEncontrado; 
-        this.actualizarMenu(); 
-        alert(`Bienvenido, ${usuarioEncontrado.nombre}`);
-        this.cerrarModal();
-      } else {
-        alert('Correo o contraseña incorrectos');
-      }
+        if (usuarioEncontrado) {
+          sessionStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
+          this.usuarioLogueado = usuarioEncontrado;
+          this.actualizarMenu();
+          alert(`Bienvenido, ${usuarioEncontrado.nombre}`);
+          this.cerrarModal();
+        } else {
+          alert('Correo o contraseña incorrectos');
+        }
+      });
     }
     
-   registrarUsuario() {
-    const usuarios = JSON.parse(localStorage.getItem('usuarios') || '[]');
-    usuarios.push(this.nuevoUsuario);
-    localStorage.setItem('usuarios', JSON.stringify(usuarios));
-  
-    sessionStorage.setItem('usuarioActivo', JSON.stringify(this.nuevoUsuario));
-    this.usuarioLogueado = this.nuevoUsuario; // <--- Esto faltaba
-    this.actualizarMenu();
-    alert('Usuario registrado correctamente');
-    this.cerrarModal();
-  }
+
+    registrarUsuario() {
+      this.usuarioService.registrar(this.nuevoUsuario).subscribe({
+        next: res => {
+          sessionStorage.setItem('usuarioActivo', JSON.stringify(this.nuevoUsuario));
+          this.usuarioLogueado = this.nuevoUsuario;
+          this.actualizarMenu();
+          alert('Usuario registrado correctamente');
+          this.cerrarModal();
+        },
+        error: err => alert('Error al registrar usuario: ' + err.error.mensaje)
+      });
+    }
+
   
     actualizarMenu() {
       if (!this.usuarioLogueado) return;
@@ -74,7 +86,8 @@ export class HeaderComponent implements OnInit {
       this.menuItems = [
         { texto: 'Asesorías', ruta: '/asesorias' },
         { texto: 'Profesionales', ruta: '/profesional' },
-        { texto: 'Contáctanos', ruta: '/contactanos' }
+        { texto: 'Contáctanos', ruta: '/contactanos' },
+        
       ];
       break;
 
@@ -83,14 +96,16 @@ export class HeaderComponent implements OnInit {
         { texto: 'Solicitudes', ruta: '/solicitudes' },
         { texto: 'Noticias', ruta: '/noticias' },
         { texto: 'Profesionales', ruta: '/profesionales' },
-        { texto: 'Usuarios', ruta: '/usuarios' }
+        { texto: 'Usuarios', ruta: '/usuarios' },
+        
       ];
       break;
 
     case 'abogado':
       this.menuItems = [
         { texto: 'Mi consultorio', ruta: '/mi consultorio' },
-        { texto: 'Solicitudes', ruta: '/solicitud' }
+        { texto: 'Solicitudes', ruta: '/solicitud' },
+      
       ];
       break;
         default:
@@ -102,8 +117,10 @@ export class HeaderComponent implements OnInit {
       const usuario = sessionStorage.getItem('usuarioActivo');
       if (usuario) {
         this.usuarioLogueado = JSON.parse(usuario);
+        console.log('Usuario logueado:', this.usuarioLogueado); // <-- AQUI
         this.actualizarMenu();
       }
+      
     }
     
   
@@ -111,8 +128,8 @@ export class HeaderComponent implements OnInit {
       sessionStorage.removeItem('usuarioActivo');
       this.usuarioLogueado = null;
       this.menuItems = [];
+      this.router.navigate(['/']); // Redirige al inicio
     }
-
  
 
   
